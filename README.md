@@ -53,6 +53,8 @@ python learn_bpe.py -i f-train.src -o src.code
 python learn_bpe.py -i f-train.trg -o trg.code
 ```
 2. Apply the bpe algorithm using the bpe models on all the files used in that experiment, except trg-test.bpe.trg:
+
+!!!!IMPORTANT!!!! When experimenting with times.en use apply_bpe_temporal.py instead !!!!IMPORTANT!!!!
 ```
 python apply_bpe.py -c src.code -i f-train.src -o src-train-bpe.src
 
