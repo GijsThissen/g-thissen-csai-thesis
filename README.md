@@ -91,19 +91,22 @@ sed -i "s/@@ //g"  pred.txt
 ```
 # Sources:
 
-learn_bpe.py [2]
+remove_whitespace.py [1]
 
-apply_bpe.py [2]
+learn_bpe.py [3]
 
-apply_bpe_temporal.py [2]
+apply_bpe.py [3]
 
-train_test_dev.py [4]
+apply_bpe_temporal.py [3]
+
+train_test_dev.py [5]
 
 
 Sources can be found when used in the code:
 
-1. DDGG. (2018, Feb 22) tqdm not showing bar. Stackoverflow.com. https://stackoverflow.com/questions/48935907/tqdm-not-showing-bar
-2. Klein, G., Kim, Y., Deng, Y., Senellart, J., & Rush, A. (2017). OpenNMT: Open-source toolkit forneural machine translation. InProceedings of ACL 2017, System Demonstrations, (pp. 67–72).,Vancouver, Canada. Association for Computational Linguistics
-3. timgeb. (2015, Dec 11). Python: keep only letters in string [duplicate]. Stackoverflow.com. https://stackoverflow.com/questions/34214139/python-keep-only-letters-in-string
-4. Shterionov, D. (2020). Python: train_test_dev.py. Tilburg University.
-5. User764357. (2014, Jan 9). How can I remove Nan from list Python/NumPy. Stackoverflow.com. https://stackoverflow.com/questions/21011777/how-can-i-remove-nan-from-list-python-numpy
+1. A. & Anda, H. E. (2016, Dec 7) Open a text file and remove any blank lines. Stackexchange.com. https://codereview.stackexchange.com/questions/145126/open-a-text-file-and-remove-any-blank-lines
+2.  DDGG. (2018, Feb 22) tqdm not showing bar. Stackoverflow.com. https://stackoverflow.com/questions/48935907/tqdm-not-showing-bar
+3. Klein, G., Kim, Y., Deng, Y., Senellart, J., & Rush, A. (2017). OpenNMT: Open-source toolkit forneural machine translation. InProceedings of ACL 2017, System Demonstrations, (pp. 67–72).,Vancouver, Canada. Association for Computational Linguistics
+4. timgeb. (2015, Dec 11). Python: keep only letters in string [duplicate]. Stackoverflow.com. https://stackoverflow.com/questions/34214139/python-keep-only-letters-in-string
+5. Shterionov, D. (2020). Python: train_test_dev.py. Tilburg University.
+6. User764357. (2014, Jan 9). How can I remove Nan from list Python/NumPy. Stackoverflow.com. https://stackoverflow.com/questions/21011777/how-can-i-remove-nan-from-list-python-numpy
