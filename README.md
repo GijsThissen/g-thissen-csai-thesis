@@ -44,6 +44,18 @@ And last preprocess the data one final time to being able to be used by the Open
 
 onmt_preprocess -train_src src-train-bpe.src -train_tgt trg-train-bpe.trg -valid_src src-dev-bpe.src -valid_tgt trg-dev-bpe.trg -save_data result
 
+2. Training
+
+onmt_train -data data/readytotrain/result -save_model model/model -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8 -encoder_type transformer -decoder_type transformer -position_encoding -train_steps 202000 -max_generator_batches 2 -dropout 0.1 -batch_size 2048 -batch_type tokens -normalization tokens -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 2000 -learning_rate 2 -max_grad_norm 0 -param_init 0 -param_init_glorot -label_smoothing 0.1 -valid_steps 5000 -save_checkpoint_steps 5000 -report_every 100 -accum_count 2 -early_stopping 5 -early_stopping_criteria ppl accuracy -world_size 1 -gpu_rank 0 -log_file train.log
+
+3. Translating
+
+onmt_translate -model model/model_step_20000.pt -src data/bpe/src-test-bpe.src -output results/50k/pred.txt -gpu 0 -verbose -replace_unk
+
+4. Detokenizing the tokenization done by the BPE-algorithm
+
+sed -i "s/@@ //g"  pred.txt
+
 # Sources:
 Sources can be found when used in the code
 
@@ -51,4 +63,3 @@ Sources can be found when used in the code
 2. Klein, G., Kim, Y., Deng, Y., Senellart, J., & Rush, A. (2017). OpenNMT: Open-source toolkit forneural machine translation. InProceedings of ACL 2017, System Demonstrations, (pp. 67–72).,Vancouver, Canada. Association for Computational Linguistics
 3. timgeb. (2015, Dec 11). Python: keep only letters in string [duplicate]. Stackoverflow.com. https://stackoverflow.com/questions/34214139/python-keep-only-letters-in-string
 4. User764357. (2014, Jan 9). How can I remove Nan from list Python/NumPy. Stackoverflow.com. https://stackoverflow.com/questions/21011777/how-can-i-remove-nan-from-list-python-numpy
-5. 
