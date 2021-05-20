@@ -28,6 +28,14 @@ First the files need to be splitted using train_test_dev.py. The command needed 
 ```
 python train_test_dev.py -s source.en -t f-sentences.nl
 ```
+
+Since the train_test_dev.py script creates files with empty space in between them. This causes the machine translation system to interpret these lines as sentences
+and starts assigning sentences to empty lines. Therefore running the following script is necessary
+
+```
+python remove_whitespace.py
+```
+
 Secondly, the BPE algorithm needs to be applied:
 1. Train the bpe models using the train.src and train.trg files:
 ```
