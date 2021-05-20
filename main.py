@@ -8,3 +8,5 @@ if __name__ == "__main__":
     raw_files = create_file("datasets/")
     os.mkdir("datafiles/")
     raw_files.data_prepare("datafiles/", normal = True, vocal=True, time=True, combined=True, sentences=True)
+    os.chdir("datafiles/")
+    fixing()
