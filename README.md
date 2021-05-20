@@ -64,7 +64,13 @@ onmt_translate -model model/model_step_20000.pt -src data/bpe/src-test-bpe.src -
 sed -i "s/@@ //g"  pred.txt
 
 # Sources:
-Sources can be found when used in the code
+
+learn_bpe.py [1]
+apply_bpe.py [1]
+train_test_dev.py [1]
+
+
+Sources can be found when used in the code:
 
 1. DDGG. (2018, Feb 22) tqdm not showing bar. Stackoverflow.com. https://stackoverflow.com/questions/48935907/tqdm-not-showing-bar
 2. Klein, G., Kim, Y., Deng, Y., Senellart, J., & Rush, A. (2017). OpenNMT: Open-source toolkit forneural machine translation. InProceedings of ACL 2017, System Demonstrations, (pp. 67–72).,Vancouver, Canada. Association for Computational Linguistics
