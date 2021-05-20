@@ -37,10 +37,15 @@ python learn_bpe.py -i f-train.trg -o trg.code
 2. Apply the bpe algorithm using the bpe models on all the files used in that experiment, except trg-test.bpe.trg:
 
 python apply_bpe.py -c src.code -i \f-train.src -o src-train-bpe.src
+
 python apply_bpe.py -c src.code -i \f-dev.src -o src-dev-bpe.src
+
 python apply_bpe.py -c src.code -i \f-test.src -o src-test-bpe.src
+
 python apply_bpe.py -c trg.code -i \f-train.trg -o trg-train-bpe.trg
+
 python apply_bpe.py -c trg.code -i \f-dev.trg -o trg-dev-bpe.trg
+
 
 And last preprocess the data one final time to being able to be used by the OpenNMT transformer
 
