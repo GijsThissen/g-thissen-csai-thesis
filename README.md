@@ -1,3 +1,3 @@
-# g-thissen-csai-thesis
+# CSAI Thesis
 Code for the Bachelor Thesis Cognitive Science and Artificial Intelligence
 
