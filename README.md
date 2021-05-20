@@ -25,9 +25,9 @@ All of the commands shown below require the user to put them into the terminal, 
 
 1. Preprocessing
 First the files need to be splitted using train_test_dev.py. The command needed to run:
-
+```
 python train_test_dev.py -s source.en -t f-sentences.nl
-
+```
 Next the BPE algorithm needs to be applied:
 1. Train the bpe models using the train.src and train.trg files:
 ```
