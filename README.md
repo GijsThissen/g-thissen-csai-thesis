@@ -21,10 +21,12 @@ pip install OpenNMT-py==v1.2.0
 Running main.py will create the basic 5 (fixed) files needed to run each of the 4 experiments.
 f-normal.en, f-times.en, f-vocal.en, f-combined.en, f-sentences.nl
 
+All of the commands shown below require the user to put them into the terminal, not a seperate python file.
+
 1. Preprocessing
 First the files need to be splitted using train_test_dev.py. The command needed to run:
 
-pythhon train_test_dev.py -s source.en -t f-sentences.nl
+python train_test_dev.py -s source.en -t f-sentences.nl
 
 Next the BPE algorithm needs to be applied:
 1. Train the bpe models using the train.src and train.trg files:
