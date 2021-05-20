@@ -36,7 +36,3 @@ def whitespace_removal():
                         if not line.isspace() and line != "nan":
                             fixed.write(line)
             pbar.update(1)  # Update pbar by 1
-
-
-if __name__ == '__main__':
-    whitespace_removal()
