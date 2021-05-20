@@ -25,6 +25,7 @@ from collections import defaultdict
 
 # hack for python2/3 compatibility
 from io import open
+
 argparse.open = open
 
 
@@ -74,14 +75,12 @@ class BPE(object):
                                           self.cache,
                                           self.glossaries)]
 
-
             #############
             # Normal
             #############
-            for item in new_word[:-1]:
-                output.append(item + self.separator)
-            output.append(new_word[-1])
-
+            # for item in new_word[:-1]:
+            #     output.append(item + self.separator)
+            # output.append(new_word[-1])
 
             ##############
             # EDIT 11/05/2021 Gijs Thissen
@@ -89,15 +88,13 @@ class BPE(object):
             # Run code above for the normal way
             ##############
             # If new_word contains more than one element (having one element suggest there not being a temporal feature)
-            # if len(new_word)>1 and new_word[-1][-1].isdigit(): # Last element of last element of new_word is digit
-            #     for item in new_word[:-1]:
-            #         output.append(item + self.separator + new_word[-1])
-            # else:
-            #     for item in new_word[:-1]:
-            #         output.append(item + self.separator)
-            #     output.append(new_word[-1])
-
-
+            if len(new_word) > 1 and new_word[-1][-1].isdigit():  # Last element of last element of new_word is digit
+                for item in new_word[:-1]:
+                    output.append(item + self.separator + new_word[-1])
+            else:
+                for item in new_word[:-1]:
+                    output.append(item + self.separator)
+                output.append(new_word[-1])
 
         return ' '.join(output)
 
@@ -235,7 +232,7 @@ def recursive_split(segment, bpe_codes, vocab, separator, final=False):
         else:
             left, right = bpe_codes[segment]
     except:
-        #sys.stderr.write('cannot split {0} further.\n'.format(segment))
+        # sys.stderr.write('cannot split {0} further.\n'.format(segment))
         yield segment
         return
 
@@ -262,7 +259,7 @@ def check_vocab_and_split(orig, bpe_codes, vocab, separator):
         if segment + separator in vocab:
             out.append(segment)
         else:
-            #sys.stderr.write('OOV: {0}\n'.format(segment))
+            # sys.stderr.write('OOV: {0}\n'.format(segment))
             for item in recursive_split(segment, bpe_codes, vocab, separator, False):
                 out.append(item)
 
@@ -270,7 +267,7 @@ def check_vocab_and_split(orig, bpe_codes, vocab, separator):
     if segment in vocab:
         out.append(segment)
     else:
-        #sys.stderr.write('OOV: {0}\n'.format(segment))
+        # sys.stderr.write('OOV: {0}\n'.format(segment))
         for item in recursive_split(segment, bpe_codes, vocab, separator, True):
             out.append(item)
 
