@@ -21,18 +21,24 @@ def whitespace_removal():
     # https://stackoverflow.com/questions/48935907/tqdm-not-showing-bar
 
     with tqdm(total=total) as pbar:
-        for element in dataset:
-            # Create new name
-            new_name = "f-" + element
-            with open(str(element), "r", encoding="utf-8") as f:  # Read from this file
-                with open(str(new_name), "w+", encoding="utf-8") as fixed:  # Write in this file
-                    # Removing all the extra white spaces
-                    while True:
-                        line = f.readline()
-                        if line == "":
-                            break
-                        if line == "nan\n":
-                            continue
-                        if not line.isspace() and line != "nan":
-                            fixed.write(line)
+        for filename in dataset:
+
+            # Source for the code:
+            # A. & Anda, H. E. (2016, Dec 7) Open a text file and remove any blank lines. Stackexchange.com.
+            # https://codereview.stackexchange.com/questions/145126/open-a-text-file-and-remove-any-blank-lines
+
+            # If the file cannot be found it will print that it does not exist
+            if not os.path.isfile(filename):
+                print("{} does not exist ".format(filename))
+                return
+            # Open the file and put all lines in a list
+            with open(filename) as filehandle:
+                lines = filehandle.readlines()
+
+            # Open the file in write mode and strip all empty elements in the lines list
+            with open(filename, 'w') as filehandle:
+                lines = filter(lambda x: x.strip(), lines)
+                filehandle.writelines(lines)
+
+
             pbar.update(1)  # Update pbar by 1
