@@ -78,9 +78,9 @@ class BPE(object):
             #############
             # Normal
             #############
-            for item in new_word[:-1]:
-                output.append(item + self.separator)
-            output.append(new_word[-1])
+            # for item in new_word[:-1]:
+            #     output.append(item + self.separator)
+            # output.append(new_word[-1])
 
             ##############
             # EDIT 11/05/2021 Gijs Thissen
@@ -88,13 +88,13 @@ class BPE(object):
             # Run code above for the normal way
             ##############
             # If new_word contains more than one element (having one element suggest there not being a temporal feature)
-            # if len(new_word) > 1 and new_word[-1][-1].isdigit():  # Last element of last element of new_word is digit
-            #     for item in new_word[:-1]:
-            #         output.append(item + self.separator + new_word[-1])
-            # else:
-            #     for item in new_word[:-1]:
-            #         output.append(item + self.separator)
-            #     output.append(new_word[-1])
+            if len(new_word) > 1 and new_word[-1][-1].isdigit():  # Last element of last element of new_word is digit
+                for item in new_word[:-1]:
+                    output.append(item + self.separator + new_word[-1])
+            else:
+                for item in new_word[:-1]:
+                    output.append(item + self.separator)
+                output.append(new_word[-1])
 
         return ' '.join(output)
 
