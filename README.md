@@ -24,6 +24,25 @@ f-normal.en, f-times.en, f-vocal.en, f-combined.en, f-sentences.nl
 All of the commands shown below require the user to put them into the terminal, not a seperate python file.
 These commands are considered for 1 single experiments, source.en can be any of the en files. However, f-sentences.nl must always be the sentence file.
 
+It is recommended to put the files for the experiment you want to run into a seperate folder as to avoid removing the whitespaces twice and creating double files, however, this is not necessary and the programme will work nonetheless.
+
+Example:
+Create a experiment1/ folder.
+
+1. Preprocessing
+First the files need to be splitted using train_test_dev.py. The command needed to run:
+```
+python train_test_dev.py -s source.en -t f-sentences.nl
+```
+
+Since the train_test_dev.py script creates files with empty space in between them. This causes the machine translation system to interpret these lines as sentences
+and starts assigning sentences to empty lines. Therefore running the following script is necessary
+
+```
+python remove_whitespace.py
+```
+
+Secondly, the BPE algorithm needs to be applied:
 1. Preprocessing
 The BPE algorithm needs to be applied:
 
