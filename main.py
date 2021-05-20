@@ -1,5 +1,5 @@
-from preprocess import preprocess
-from fixing import fixing
+from preprocess import create_file
+from remove_whitespace import whitespace_removal
 import os
 
 if __name__ == "__main__":
@@ -9,4 +9,4 @@ if __name__ == "__main__":
     os.mkdir("datafiles/")
     raw_files.data_prepare("datafiles/", normal = True, vocal=True, time=True, combined=True, sentences=True)
     os.chdir("datafiles/")
-    fixing()
+    whitespace_removal()
