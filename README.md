@@ -26,6 +26,7 @@ These commands are considered for 1 single experiments, source.en can be any of 
 
 1. Preprocessing
 The BPE algorithm needs to be applied:
+
 1. Train the bpe models using the train.src and train.trg files:
 ```
 python learn_bpe.py -i f-train.src -o src.code
