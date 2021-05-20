@@ -65,9 +65,9 @@ sed -i "s/@@ //g"  pred.txt
 
 # Sources:
 
-learn_bpe.py [1]
-apply_bpe.py [1]
-train_test_dev.py [1]
+learn_bpe.py [2]
+apply_bpe.py [2]
+train_test_dev.py [2]
 
 
 Sources can be found when used in the code:
