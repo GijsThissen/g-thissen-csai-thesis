@@ -22,7 +22,7 @@ Running main.py will create the basic 5 (fixed) files needed to run each of the 
 f-normal.en, f-times.en, f-vocal.en, f-combined.en, f-sentences.nl
 
 All of the commands shown below require the user to put them into the terminal, not a seperate python file.
-
+These commands are considered for 1 single experiments, source.en can be any of the en files. However, f-sentences.nl must always be the sentence file.
 1. Preprocessing
 First the files need to be splitted using train_test_dev.py. The command needed to run:
 ```
@@ -56,7 +56,12 @@ onmt_preprocess -train_src src-train-bpe.src -train_tgt trg-train-bpe.trg -valid
 ```
 onmt_train -data result -save_model model -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8 -encoder_type transformer -decoder_type transformer -position_encoding -train_steps 202000 -max_generator_batches 2 -dropout 0.1 -batch_size 2048 -batch_type tokens -normalization tokens -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 2000 -learning_rate 2 -max_grad_norm 0 -param_init 0 -param_init_glorot -label_smoothing 0.1 -valid_steps 5000 -save_checkpoint_steps 5000 -report_every 100 -accum_count 2 -early_stopping 5 -early_stopping_criteria ppl accuracy -world_size 1 -gpu_rank 0 -log_file train.log
 ```
+
+Possible error: Not enough V-RAM.
+Solution: Decrease the batch size or alternatively use a better GPU.
+
 3. Translating
+
 In the command the last model (20k steps) is selected. If the system stops earlier due to early stopping criteria use that model step instead.
 ```
 onmt_translate -model model_step_20000.pt -src src-test-bpe.src -output pred.txt -gpu 0 -verbose -replace_unk
