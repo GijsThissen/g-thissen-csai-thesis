@@ -23,20 +23,9 @@ f-normal.en, f-times.en, f-vocal.en, f-combined.en, f-sentences.nl
 
 All of the commands shown below require the user to put them into the terminal, not a seperate python file.
 These commands are considered for 1 single experiments, source.en can be any of the en files. However, f-sentences.nl must always be the sentence file.
+
 1. Preprocessing
-First the files need to be splitted using train_test_dev.py. The command needed to run:
-```
-python train_test_dev.py -s source.en -t f-sentences.nl
-```
-
-Since the train_test_dev.py script creates files with empty space in between them. This causes the machine translation system to interpret these lines as sentences
-and starts assigning sentences to empty lines. Therefore running the following script is necessary
-
-```
-python remove_whitespace.py
-```
-
-Secondly, the BPE algorithm needs to be applied:
+The BPE algorithm needs to be applied:
 1. Train the bpe models using the train.src and train.trg files:
 ```
 python learn_bpe.py -i f-train.src -o src.code
@@ -56,7 +45,7 @@ python apply_bpe.py -c trg.code -i f-train.trg -o trg-train-bpe.trg
 python apply_bpe.py -c trg.code -i f-dev.trg -o trg-dev-bpe.trg
 ```
 
-Lastly, preprocess the data one final time to being able to be used by the OpenNMT transformer
+Secondly, preprocess the data one final time to being able to be used by the OpenNMT transformer
 ```
 onmt_preprocess -train_src src-train-bpe.src -train_tgt trg-train-bpe.trg -valid_src src-dev-bpe.src -valid_tgt trg-dev-bpe.trg -save_data result
 ```
