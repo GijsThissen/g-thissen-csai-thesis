@@ -42,3 +42,6 @@ def whitespace_removal():
 
 
             pbar.update(1)  # Update pbar by 1
+
+# The reason for this function being here is that when the file is called in the terminal this will run
+whitespace_removal()
