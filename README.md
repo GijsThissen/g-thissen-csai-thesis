@@ -1,6 +1,7 @@
 # Multiple feature Gloss to Text translation 
 Gijs Thissen - 21-05-2021
-Code for the Bachelor Thesis Cognitive Science and Artificial Intelligence
+
+Code for the Bachelor Thesis BSc. Cognitive Science and Artificial Intelligence
 This code has been created for the purposes of my Bachelor Thesis CSAI.
 
 The goal of the thesis was to figure out whether or not adding temporal data (and other tokens) to a baseline gloss system would aid in its ability to translate gloss to text.
