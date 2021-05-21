@@ -32,11 +32,11 @@ def whitespace_removal():
                 print("{} does not exist ".format(filename))
                 return
             # Open the file and put all lines in a list
-            with open(filename) as filehandle:
+            with open(filename, encoding = "utf-8") as filehandle:
                 lines = filehandle.readlines()
 
             # Open the file in write mode and strip all empty elements in the lines list
-            with open(filename, 'w') as filehandle:
+            with open(filename, 'w', encoding = "utf-8") as filehandle:
                 lines = filter(lambda x: x.strip(), lines)
                 filehandle.writelines(lines)
 
