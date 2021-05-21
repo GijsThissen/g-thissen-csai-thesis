@@ -45,7 +45,7 @@ python remove_whitespace.py
 
 Potentially, the BPE algorithm needs to be applied:
 
-<strong>The BPE-algorithm is only available for the normal and temporal experiments, if you are running the vocal or combined experiments skip to the onmt_preprocess step, I am sorry for the inconvience.<\strong>
+<strong>The BPE-algorithm is only available for the normal and temporal experiments, if you are running the vocal or combined experiments skip to the onmt_preprocess step, I am sorry for the inconvience. </strong>
 
 The BPE algorithm needs to be applied:
 
