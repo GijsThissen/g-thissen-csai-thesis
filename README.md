@@ -29,7 +29,7 @@ It is recommended to put the files for the experiment you want to run into a sep
 Example:
 Create a experiment1/ folder.
 
-1. Preprocessing
+## 1. Preprocessing
 First the files need to be splitted using train_test_dev.py. The command needed to run:
 ```
 python train_test_dev.py -s source.en -t f-sentences.nl
@@ -43,18 +43,17 @@ python remove_whitespace.py
 ```
 
 Secondly, the BPE algorithm needs to be applied:
-1. Preprocessing
 The BPE algorithm needs to be applied:
 
-1. Train the bpe models using the train.src and train.trg files:
+### 1. Train the bpe models using the train.src and train.trg files:
 ```
 python learn_bpe.py -i f-train.src -o src.code
 
 python learn_bpe.py -i f-train.trg -o trg.code
 ```
-2. Apply the bpe algorithm using the bpe models on all the files used in that experiment, except trg-test.bpe.trg:
+### 2. Apply the bpe algorithm using the bpe models on all the files used in that experiment, except trg-test.bpe.trg:
 
-!!!!IMPORTANT!!!! When experimenting with times.en use apply_bpe_temporal.py instead !!!!IMPORTANT!!!!
+<strong>When experimenting with times.en use apply_bpe_temporal.py instead </strong>
 ```
 python apply_bpe.py -c src.code -i f-train.src -o src-train-bpe.src
 
@@ -71,7 +70,7 @@ Secondly, preprocess the data one final time to being able to be used by the Ope
 ```
 onmt_preprocess -train_src src-train-bpe.src -train_tgt trg-train-bpe.trg -valid_src src-dev-bpe.src -valid_tgt trg-dev-bpe.trg -save_data result
 ```
-2. Training
+## 2. Training
 ```
 onmt_train -data result -save_model model -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8 -encoder_type transformer -decoder_type transformer -position_encoding -train_steps 202000 -max_generator_batches 2 -dropout 0.1 -batch_size 2048 -batch_type tokens -normalization tokens -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 2000 -learning_rate 2 -max_grad_norm 0 -param_init 0 -param_init_glorot -label_smoothing 0.1 -valid_steps 5000 -save_checkpoint_steps 5000 -report_every 100 -accum_count 2 -early_stopping 5 -early_stopping_criteria ppl accuracy -world_size 1 -gpu_rank 0 -log_file train.log
 ```
@@ -79,13 +78,13 @@ onmt_train -data result -save_model model -layers 6 -rnn_size 512 -word_vec_size
 Possible error: Not enough V-RAM.
 Solution: Decrease the batch size or alternatively use a better GPU.
 
-3. Translating
+## 3. Translating
 
 In the command the last model (20k steps) is selected. If the system stops earlier due to early stopping criteria use that model step instead.
 ```
 onmt_translate -model model_step_20000.pt -src src-test-bpe.src -output pred.txt -gpu 0 -verbose -replace_unk
 ```
-4. Detokenizing the tokenization done by the BPE-algorithm
+## 4. Detokenizing the tokenization done by the BPE-algorithm
 ```
 sed -i "s/@@ //g"  pred.txt
 ```
