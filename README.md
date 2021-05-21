@@ -46,15 +46,17 @@ python remove_whitespace.py
 Secondly, the BPE algorithm needs to be applied:
 The BPE algorithm needs to be applied:
 
-### 1. Train the bpe models using the train.src and train.trg files:
+### 1. Train the BPE models using the train.src and train.trg files:
 ```
 python learn_bpe.py -i f-train.src -o src.code
 
 python learn_bpe.py -i f-train.trg -o trg.code
 ```
-### 2. Apply the bpe algorithm using the bpe models on all the files used in that experiment, except trg-test.bpe.trg:
+### 2. Apply the BPE algorithm 
 
-<strong>When experimenting with times.en use apply_bpe_temporal.py instead </strong>
+<strong>Using the bpe models on all the files used in that experiment, except trg-test.bpe.trg:
+
+When experimenting with times.en use apply_bpe_temporal.py instead </strong>
 ```
 python apply_bpe.py -c src.code -i f-train.src -o src-train-bpe.src
 
