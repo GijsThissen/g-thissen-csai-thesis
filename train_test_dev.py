@@ -118,8 +118,8 @@ def main():
     
     # 4. now we are ok to save the data into train, test and dev files
     for split in ['train', 'test', 'dev']:
-        src_out_filename = '.'.join([args.source, split, 'tok-clean', 'src']) 
-        trg_out_filename = '.'.join([args.target, split, 'tok-clean', 'trg'])
+        src_out_filename = '.'.join([split, 'src'])
+        trg_out_filename = '.'.join([split, 'trg'])
         with codecs.open(src_out_filename, 'w', 'utf8') as srcOutFile, codecs.open(trg_out_filename, 'w', 'utf8') as trgOutFile:
             srcOutFile.write('\n'.join([sent.rstrip() for sent in src[split]]) + '\n')
             trgOutFile.write('\n'.join([sent.rstrip() for sent in trg[split]]) + '\n')
