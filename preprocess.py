@@ -67,7 +67,7 @@ class create_file(object):
     def drop_empty(self):
         """
         Dropping the empty rows from the dataset causing it to become more information packed.
-        Downsides of this approach can be found in the Discussion of the written Thesis.
+        Downsides of this approach may be the loss of important information present in the whitespaces.
 
         :return: dataframe, a dataframe where there are no empty rows.
         """
