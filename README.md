@@ -33,7 +33,7 @@ Create a experiment1/ folder.
 ## 1. Preprocessing
 First the files need to be splitted using train_test_dev.py. The command needed to run:
 ```
-python train_test_dev.py -s source.en -t f-sentences.nl
+python train_test_dev.py -s source.en -t sentences.nl
 ```
 
 Since the train_test_dev.py script creates files with empty space in between them. This causes the machine translation system to interpret these lines as sentences
@@ -48,9 +48,9 @@ The BPE algorithm needs to be applied:
 
 ### 1. Train the BPE models using the train.src and train.trg files:
 ```
-python learn_bpe.py -i f-train.src -o src.code
+python learn_bpe.py -i train.src -o src.code
 
-python learn_bpe.py -i f-train.trg -o trg.code
+python learn_bpe.py -i train.trg -o trg.code
 ```
 ### 2. Apply the BPE algorithm 
 
@@ -58,15 +58,15 @@ python learn_bpe.py -i f-train.trg -o trg.code
 
 When experimenting with times.en use apply_bpe_temporal.py instead </strong>
 ```
-python apply_bpe.py -c src.code -i f-train.src -o src-train-bpe.src
+python apply_bpe.py -c src.code -i train.src -o src-train-bpe.src
 
-python apply_bpe.py -c src.code -i f-dev.src -o src-dev-bpe.src
+python apply_bpe.py -c src.code -i dev.src -o src-dev-bpe.src
 
-python apply_bpe.py -c src.code -i f-test.src -o src-test-bpe.src
+python apply_bpe.py -c src.code -i test.src -o src-test-bpe.src
 
-python apply_bpe.py -c trg.code -i f-train.trg -o trg-train-bpe.trg
+python apply_bpe.py -c trg.code -i train.trg -o trg-train-bpe.trg
 
-python apply_bpe.py -c trg.code -i f-dev.trg -o trg-dev-bpe.trg
+python apply_bpe.py -c trg.code -i dev.trg -o trg-dev-bpe.trg
 ```
 
 Secondly, preprocess the data one final time to being able to be used by the OpenNMT transformer
