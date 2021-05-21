@@ -29,10 +29,13 @@ def split_ttd(srcF, trgF, size):
         logging.error("Target file does not exist")
         raise FileNotFoundError()
     
-    with codecs.open(srcF, 'r', 'utf8') as srcFile, codecs.open(trgF, 'r', 'utf8') as trgFile:
+    with open(srcF, 'r', encoding = "utf-8") as srcFile, open(trgF, 'r',encoding = "utf-8") as trgFile:
         src_data = srcFile.readlines()
         trg_data = trgFile.readlines()
 
+    print(str(len(src_data)))
+    print(str(len(trg_data)))
+    
     src = {}
     trg = {}
 
@@ -118,8 +121,8 @@ def main():
         src_out_filename = '.'.join([args.source, split, 'tok-clean', 'src']) 
         trg_out_filename = '.'.join([args.target, split, 'tok-clean', 'trg'])
         with codecs.open(src_out_filename, 'w', 'utf8') as srcOutFile, codecs.open(trg_out_filename, 'w', 'utf8') as trgOutFile:
-            srcOutFile.write('\n'.join(src[split]) + '\n')
-            trgOutFile.write('\n'.join(trg[split]) + '\n')
+            srcOutFile.write('\n'.join([sent.rstrip() for sent in src[split]]) + '\n')
+            trgOutFile.write('\n'.join([sent.rstrip() for sent in trg[split]]) + '\n')
     logging.info("All done.")
 # That should be it.    
     
