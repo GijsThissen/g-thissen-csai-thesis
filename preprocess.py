@@ -241,22 +241,22 @@ class create_file(object):
             left = self.standardisation(pre_standarised_left)
             pre_standarised_right = row['Right']
             right = self.standardisation(pre_standarised_right)
-            tijd = row["Time"]
+            tijd = format(row["Time"], '04d')
         else:
             left = row['Left']
             # Tijd is the Dutch word for time this is done to distinguish between parameter
             # time and variable time (tijd)
-            tijd = row["Time"]
+            tijd = format(row["Time"], '04d')
             right = row['Right']
 
         if str(right) == "nan" and str(left) == "nan":
             pass
         elif str(right) == "nan":
-            normal_time += f"{left}|{tijd} "
+            normal_time += f"{left}￨{tijd} "
         elif str(left) == "nan":
-            normal_time += f"{right}|{tijd} "
+            normal_time += f"{right}￨{tijd} "
         elif str(left) != "nan" and str(right) != "nan":
-            normal_time += f"{left}|{tijd} {right}|{tijd} "
+            normal_time += f"{left}￨{tijd} {right}￨{tijd} "
         else:
             pass
         return normal_time
@@ -292,11 +292,11 @@ class create_file(object):
         if str(right) == "nan" and str(left) == "nan":
             pass
         elif str(right) == "nan":
-            normal_vocal += f"{left}|{vocal_line} "
+            normal_vocal += f"{left}￨{vocal_line} "
         elif str(left) == "nan":
-            normal_vocal += f"{right}|{vocal_line} "
+            normal_vocal += f"{right}￨{vocal_line} "
         elif str(left) != "nan" and str(right) != "nan":
-            normal_vocal += f"{left}|{vocal_line} {right}|{vocal_line} "
+            normal_vocal += f"{left}￨{vocal_line} {right}￨{vocal_line} "
         else:
             pass
 
@@ -336,11 +336,11 @@ class create_file(object):
         if str(right) == "nan" and str(left) == "nan":
             pass
         elif str(right) == "nan":
-            normal_combined += f"{left}|{vocal_line}|{tijd} "
+            normal_combined += f"{left}￨{vocal_line}￨{tijd} "
         elif str(left) == "nan":
-            normal_combined += f"{right}|{vocal_line}|{tijd} "
+            normal_combined += f"{right}￨{vocal_line}￨{tijd} "
         elif str(left) != "nan" and str(right) != "nan":
-            normal_combined += f"{left}|{vocal_line}|{tijd} {right}|{vocal_line}|{tijd} "
+            normal_combined += f"{left}￨{vocal_line}￨{tijd} {right}￨{vocal_line}￨{tijd} "
         else:
             pass
 
