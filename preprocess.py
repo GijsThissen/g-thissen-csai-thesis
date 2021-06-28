@@ -276,10 +276,10 @@ class create_file(object):
             left = self.standardisation(pre_standarised_left)
             pre_standarised_right = row['Right']
             right = self.standardisation(pre_standarised_right)
-            vocal_line = format(row["Mouth"], '04d')
+            vocal_line = row["Mouth"]
         else:
             left = row['Left']
-            vocal_line = format(row["Mouth"],'04d' )
+            vocal_line = row["Mouth"]
             right = row['Right']
 
             # OpenNMT has some restriction when it comes to having source factors in the dataset, as
@@ -317,13 +317,13 @@ class create_file(object):
             left = self.standardisation(pre_standarised_left)
             pre_standarised_right = row['Right']
             right = self.standardisation(pre_standarised_right)
-            tijd = format(row["Time"],'04d')
-            vocal_line = format(row["Mouth"],'04d')
+            tijd = format(row["Time"], '04d')
+            vocal_line = row["Mouth"]
         else:
             left = row['Left']
-            vocal_line = format(row["Mouth"],'04d')
+            vocal_line = row["Mouth"]
             right = row['Right']
-            tijd = format(row["Time"],'04d')
+            tijd = format(row["Time"], '04d')
 
             # OpenNMT has some restriction when it comes to having source factors in the dataset, as
             # opposed to MarianNMT all the words must have the same amount of source factors. Therefore
